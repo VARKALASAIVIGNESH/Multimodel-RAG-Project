@@ -15,7 +15,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 app = Flask(__name__)
 
 # Initialize the Groq client with your API key
-groq_client = Groq(api_key="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")  
+groq_client = Groq(api_key="your api")  
 
 
 
