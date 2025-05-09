@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extracted Text - Multimodal RAG Pipeline</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 600px;
+            text-align: left;
+        }
+        h1, h3 {
+            color: #333;
+        }
+        .extracted-text {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            white-space: pre-wrap;
+        }
+        .error {
+            color: red;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            text-align: left;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Extracted Text</h1>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% elif extracted_text %}
+            <h3>Extracted Text from {{ filename }}:</h3>
+            <div class="extracted-text">{{ extracted_text }}</div>
+            <form action="/result" method="POST">
+                <label for="query">Enter your query:</label>
+                <input type="text" id="query" name="query" required placeholder="e.g., Who won the race?">
+                <button type="submit">Search</button>
+            </form>
+        {% else %}
+            <p class="error">Error: No text could be extracted from the PDF.</p>
+        {% endif %}
+        <a href="/">Upload Another PDF</a>
+    </div>
+</body>
+</html>
