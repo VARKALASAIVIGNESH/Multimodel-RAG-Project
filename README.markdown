@@ -1,5 +1,5 @@
 # Multimodal RAG Application
-
+https://drive.google.com/file/d/1m48w5qIr9mP_OYj0DFNhs0QEqI2-f4J4/view?usp=sharing
 ## Overview
 
 This project implements a Multimodal Retrieval-Augmented Generation (RAG) pipeline that processes both text and image inputs from PDF documents to answer user queries. The application extracts text and images, embeds them into a shared multimodal vector space using CLIP, stores the embeddings in ChromaDB for semantic retrieval, and generates answers using a combination of CLIP-generated image descriptions and LLaMA (via Groq API). The app avoids using OCR for image content, as per the task requirements, and provides a user-friendly web interface built with Flask.
